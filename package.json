@@ -1,0 +1,58 @@
+{
+  "name": "erp-home-motor",
+  "version": "0.0.0",
+  "description": "home de erp gestion-motor",
+  "main": "main.tsx",
+  "scripts": {
+    "start": "webpack-dev-server --inline",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist",
+    "eslint": "npm run eslint:flag -- src",
+    "eslint:flag": "./node_modules/.bin/eslint --fix",
+    "sass": "node-sass app/sass/main.scss app/sass/main.css",
+    "build": "npm run clean && webpack --display-error-details",
+    "mocks": "node server/app.js",
+    "serve": "webpack-dev-server --debug --progress --colors --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krbaio3/gm-react.git"
+  },
+  "author": "jorge carballo alonso krbaio3@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krbaio3/gm-react/issues"
+  },
+  "homepage": "https://github.com/krbaio3/gm-react#readme",
+  "dependencies": {
+    "bootstrap": "~4.0.0-alpha.6",
+    "react": "~15.4.2",
+    "react-dom": "~15.4.2"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "~3.1.2",
+    "@types/react": "15.0.20",
+    "@types/react-dom": "~0.14.18",
+    "css-loader": "~0.27.3",
+    "extract-text-webpack-plugin": "~2.1.0",
+    "file-loader": "~0.10.1",
+    "html-webpack-plugin": "~2.28.0",
+    "style-loader": "~0.16.0",
+    "typescript": "~2.4.2",
+    "url-loader": "~0.5.7",
+    "webpack": "~2.3.2",
+    "webpack-dev-server": "~2.4.2",
+    "copy-webpack-plugin": "~4.0.1",
+    "eslint": "~4.3.0",
+    "eslint-config-airbnb-base": "~11.3.0",
+    "eslint-plugin-import": "~2.7.0",
+    "node-sass": "~4.0.0",
+    "npm-run-all": "~4.0.2",
+    "preprocess-loader": "~0.2.2",
+    "rimraf": "~2.6.1",
+    "sass-lint": "~1.10.2",
+    "sass-loader": "~6.0.5",
+    "tslint-config-airbnb": "~5.2.1",
+    "yarn": "~0.27.5"
+  }
+}
