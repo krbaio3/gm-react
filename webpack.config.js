@@ -6,7 +6,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var basePath = __dirname;
 
 module.exports = {
-  context: path.join(basePath, 'src'),
+  context: path.join(basePath, "src"),
   resolve: {
       extensions: ['.js', '.ts', '.tsx']
   },
@@ -26,7 +26,7 @@ module.exports = {
        contentBase: './dist', // Content base
        inline: true, // Enable watch and live reload
        host: 'localhost',
-       port: 8080,
+       port: 8081,
        stats: 'errors-only'
   },
 
@@ -71,7 +71,7 @@ module.exports = {
     // Generate index.html in /dist => https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html', // Name of file in ./dist/
-      template: 'client/index.html', // Name of template in ./src
+      template: './client/index.html', // Name of template in ./src
       hash: true
     }),
     new ExtractTextPlugin({
