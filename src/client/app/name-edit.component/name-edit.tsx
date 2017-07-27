@@ -1,44 +1,38 @@
 import * as React from 'react';
 
 interface Props {
-  initialUserName: string;
-  onNameUpdated: (newName: string) => any;
+  editingUserName: string;
+  onEditingNameUpdated: (newEditing: string) => void;
+  onNameUpdatedRequest: () => void;
 }
 
-interface State {
-  editingName: string;
-}
+// tslint:disable-next-line:max-line-length
+// tslint:disable-next-line:variable-name
+export const NameEditComponent = ({ editingUserName, onEditingNameUpdated, onNameUpdatedRequest } : Props) => {
+  
+    // this.onChangeEditingName = this.onChangeEditingName.bind(this);
+    // this.onNameUpdateRequestSubmit = this.onNameUpdateRequestSubmit.bind(this);
+  
 
-export class NameEditComponent extends React.Component <Props, State> {
-  constructor(props:Props) {
-    super(props);
+  const onChangeEditingName = (event) => {
+    onEditingNameUpdated(event.target.value);
+  };
+  const onNameUpdateRequestSubmit = (event) => {
+    onNameUpdatedRequest();
+  };
 
-    this.state = { editingName: this.props.initialUserName };
-    this.onChangeName = this.onChangeName.bind(this);
-  }
+  return (
+    <div>
+      <label>Update Name</label>
+      <input  type="text" 
+              value={editingUserName} 
+              onChange={onChangeEditingName}/>
 
-  onChangeName(event: any): any {
-    this.setState({ editingName: event.target.value });
-    console.log(event.target.value);
-  }
-  onNameSubmit(event : any): any {
-    this.props.onNameUpdated(this.state.editingName);
-  }
+      <input  type="submit" 
+              value="Change"
+              className="btn btn-success"
+              onClick={onNameUpdateRequestSubmit}/>
+    </div>
+  );
 
-  public render() {
-    return (
-      <div>
-        <label>Update Name</label>
-        <input  type="text" 
-                value={this.state.editingName} 
-                onChange={this.onChangeName}/>
-
-        <input  type="submit" 
-                value="Change"
-                className="btn btn-default"
-                onClick={this.onNameSubmit.bind(this)}/>
-      </div>
-    );
-  }
-
-}
+};

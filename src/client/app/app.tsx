@@ -8,7 +8,7 @@ interface Props {
 // si agregamos la propuedad password, el objeto State, deberíamos inicializarlo también
 interface State {
   userName: string;
-  password: string;
+  editingUserName: string;
 }
 
 
@@ -18,13 +18,17 @@ export class App extends React.Component<{}, State>{
     super(props);
 
     // incicializamos los dos objetos como hesmos dicho en la inteface
-    this.state = { userName: ' defaultUserName', password : 'test' };
+    this.state = { userName: ' defaultUserName', editingUserName : 'defaultEditingUserName' };
     this.setUserNameState = this.setUserNameState.bind(this);
+    this.updateEditingName = this.updateEditingName.bind(this);
   }
 
-  setUserNameState(newName : string) {
-    // hacemos una inicialización parcial del State (Esto es moderno)
-    this.setState({ userName: newName });
+  setUserNameState() {
+    this.setState({ userName: this.state.editingUserName });
+  }
+
+  updateEditingName (editingName : string) : void {
+    this.setState({ editingUserName : editingName } as State);
   }
 
   public render() {
@@ -32,10 +36,11 @@ export class App extends React.Component<{}, State>{
             <div>
                 <HelloComponent userName={this.state.userName} />
                 <NameEditComponent
-                    initialUserName={this.state.userName}
-                    onNameUpdated={this.setUserNameState} />
+                    editingUserName={this.state.editingUserName}
+                    onEditingNameUpdated={this.updateEditingName}
+                    onNameUpdatedRequest = {this.setUserNameState} />
             </div>
 
-    );
+    );  
   }
 }
