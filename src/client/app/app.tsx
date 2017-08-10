@@ -21,6 +21,10 @@ export class App extends React.Component<{}, State>{
     this.state = { userName: ' defaultUserName', editingUserName : 'defaultEditingUserName' };
     this.setUserNameState = this.setUserNameState.bind(this);
     this.updateEditingName = this.updateEditingName.bind(this);
+
+    setTimeout(() => {
+      this.setState({ userName : 'yo mando', editingUserName : 'yo mando' });
+    }, 5000);
   }
 
   setUserNameState() {
