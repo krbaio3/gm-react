@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 interface Props {
+  userName: string;
   editingUserName: string;
   onEditingNameUpdated: (newEditing: string) => void;
   onNameUpdatedRequest: () => void;
@@ -8,11 +9,7 @@ interface Props {
 
 // tslint:disable-next-line:max-line-length
 // tslint:disable-next-line:variable-name
-export const NameEditComponent = ({ editingUserName, onEditingNameUpdated, onNameUpdatedRequest } : Props) => {
-  
-    // this.onChangeEditingName = this.onChangeEditingName.bind(this);
-    // this.onNameUpdateRequestSubmit = this.onNameUpdateRequestSubmit.bind(this);
-  
+export const NameEditComponent = ({ userName, editingUserName, onEditingNameUpdated, onNameUpdatedRequest } : Props) => {
 
   const onChangeEditingName = (event) => {
     onEditingNameUpdated(event.target.value);
@@ -31,7 +28,8 @@ export const NameEditComponent = ({ editingUserName, onEditingNameUpdated, onNam
       <input  type="submit" 
               value="Change"
               className="btn btn-success"
-              onClick={onNameUpdateRequestSubmit}/>
+              onClick={onNameUpdateRequestSubmit}
+              disabled={editingUserName == '' || userName == editingUserName}/>
     </div>
   );
 

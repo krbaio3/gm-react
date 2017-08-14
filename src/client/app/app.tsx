@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { HelloComponent } from './hello.component/hello';
 import { NameEditComponent } from './name-edit.component/name-edit';
+import { HomeComponent } from './home.component/home';
 
 interface Props {
 
@@ -42,7 +43,9 @@ export class App extends React.Component<{}, State>{
                 <NameEditComponent
                     editingUserName={this.state.editingUserName}
                     onEditingNameUpdated={this.updateEditingName}
-                    onNameUpdatedRequest = {this.setUserNameState} />
+                    onNameUpdatedRequest = {this.setUserNameState}
+                    userName = {this.state.userName} />
+                <HomeComponent></HomeComponent>
             </div>
 
     );  

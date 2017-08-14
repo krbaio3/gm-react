@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { VehicleComponent } from './vehicle.component/vehicle';
+import { VehicleComponent } from '../vehicle.component/vehicle';
 
-export const HomeComponent = (props: Props) => {
+export const HomeComponent = () => {
   return (
-        <Vehicle></Vehicle>
+    <VehicleComponent></VehicleComponent>
   );
 };
