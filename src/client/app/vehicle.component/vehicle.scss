@@ -1,0 +1,51 @@
+.gas-station {
+    background-image: url('../assets/img/gas-station.svg');
+    background-repeat: no-repeat;
+    display: inline-block; // font: normal normal normal #{$fa-font-size-base}/#{$fa-line-height-base} FontAwesome; // shortening font declaration
+    font-size: inherit; // can't have font-size inherit on line above, so need to override
+    text-rendering: auto; // optimizelegibility throws things off #1094
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@function _buildIcon($icon) {
+    $icon: '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24">#{$icon}</svg>';
+    @return $icon;
+}
+
+@function icon( $icon-name,
+$color,
+$stroke-color: transparent,
+$stroke-width: 0,
+$css: '' // arbitrary css) {
+$icons: ( home: '<path fill="#{$color}" stroke="#{$stroke-color}" stroke-width="#{$stroke-width}" style="#{$css}" d="M10 20v-6h4v6h5v-8h3l-10-9-10 9h3v8z"/>',
+heart: '<path fill="#{$color}" stroke="#{$stroke-color}" stroke-width="#{$stroke-width}" style="#{$css}" d="M12 21.35l-1.45-1.32c-5.15-4.67-8.55-7.75-8.55-11.53 0-3.08 2.42-5.5 5.5-5.5 1.74 0 3.41.81 4.5 2.09 1.09-1.28 2.76-2.09 4.5-2.09 3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54l-1.45 1.31z"/>',
+star: '<path fill="#{$color}" stroke="#{$stroke-color}" stroke-width="#{$stroke-width}" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+ ');
+ $icon: _buildIcon(map-get($icons, $icon-name)
+ );
+@return url('data:image/svg+xml;utf8,#{$icon}');
+
+}
+
+.icon {
+    display: inline-block;
+    font-size: 0;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.icon-lg {
+    width: 75px;
+    height: 75px;
+}
+
+.icon-home {
+    background-image: icon(gas-station, blue);
+}
+
+
