@@ -1,5 +1,5 @@
 import * as React from 'react';
-require('./vehicle.scss');
+require('./client.scss');
 
 export const VehicleComponent = () => {
   return (
