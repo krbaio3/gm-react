@@ -1,12 +1,13 @@
 import * as React from 'react';
 // import { VehicleComponent } from '../vehicle.component/vehicle';
-// import { NavBar } from '../core/navBar/navBar';
+import { NavBar } from '../navbar.component/navBar';
+import { Social } from '../social.component/social';
 require('./home.scss');
 
 export const HomeComponent = () => {
   return (
     <div>
-      {/*<NavBar></NavBar>*/}
+      <NavBar></NavBar>
       <div className="container" id="home">
         <div className="row">
           <button className="salto col-12">
@@ -27,6 +28,7 @@ export const HomeComponent = () => {
           </button>
         </div>
       </div>
+      <Social></Social>
     </div>
   );
 };
