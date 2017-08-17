@@ -1,18 +1,26 @@
-const express = require('express');
-const app = express();
+const Eventos = require('events');
 
-const port = 9004;
-const routes = {
-    soliCancel: {
-        url: '/api/1.0/gestionmotor/vehicles',
-        file: './api/vehicles.mock.json',
-    },
-};
+class Coche extends Eventos {
+    constructor() {
+        super();
+        this.contador=0;
+    }
 
-app.post(routes.soliCancel.url, (req, res) => {
-    res.send(JSON.stringify(require(routes.soliCancel.file)));
+    Arrancar() {
+        console.log("El coche arranca");
+        this.emit('arranco', this.contador);
+        this.contador+=1;
+    }
+
+}
+
+var coche1 = new Coche();
+
+coche1.on('arranco', function(c) {
+    console.log("El evento fue escuchado y la secuencia ejecutada => ", c);
 });
 
-app.listen(port, () => {
-    console.log(`Mocks app listening on port ${port}!`);
-});
+coche1.Arrancar();
+coche1.Arrancar();
+coche1.Arrancar();
+coche1.Arrancar();

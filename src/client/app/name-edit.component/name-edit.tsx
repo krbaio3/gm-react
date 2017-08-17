@@ -29,7 +29,7 @@ export const NameEditComponent = ({ userName, editingUserName, onEditingNameUpda
               value="Change"
               className="btn btn-success"
               onClick={onNameUpdateRequestSubmit}
-              disabled={editingUserName == '' || userName == editingUserName}/>
+              disabled={editingUserName === '' || userName === editingUserName}/>
     </div>
   );
 
