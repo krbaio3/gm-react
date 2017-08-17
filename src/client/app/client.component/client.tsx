@@ -1,12 +1,12 @@
 import * as React from 'react';
-require('./vehicle.scss');
+require('./client.scss');
 
 export const VehicleComponent = () => {
   return (
     <div>
       <br />
       <form>
-        {/*bloque de Matricula*/}
+        {/*bloque de dropdown Matricula*/}
         <div className="col-xs-4 col-lg-6">
           <div className="input-group">
             <input type="text" className="form-control" placeholder="Introduce Matricula..." />
@@ -17,7 +17,7 @@ export const VehicleComponent = () => {
             </span>
           </div>
         </div>
-        {/*bloque de Marca*/}
+        {/*bloque de dropdown Marca*/}
         <div className="col-xs-4 col-lg-6">
           <div className="input-group">
             <input type="text" className="form-control" placeholder="Introduce Marca..." />
@@ -28,7 +28,7 @@ export const VehicleComponent = () => {
             </span>
           </div>
         </div>
-        {/*bloque de Modelo*/}
+        {/*bloque de dropdown Modelo*/}
         <div className="col-xs-4 col-lg-6">
           <div className="input-group">
             <input type="text" className="form-control" placeholder="Introduce Modelo..." />

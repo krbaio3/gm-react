@@ -13,7 +13,8 @@ module.exports = {
 
     entry: [
         './client/main.tsx',
-        '../node_modules/bootstrap/dist/css/bootstrap.css'
+        '../node_modules/bootstrap/dist/css/bootstrap.css',
+        '../node_modules/font-awesome/css/font-awesome.css'
     ],
     output: {
         path: path.join(basePath, 'dist'),
@@ -36,13 +37,24 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'awesome-typescript-loader',
             },
-            {   
+            {
                 test: /\.scss$/,
                 exclude: /(node_modules)/,
                 loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [{
                             loader: 'css-loader',
+                        },
+                        {
+                            loader: 'postcss-loader', // Run post css actions
+                            options: {
+                                plugins: function() { // post css plugins, can be exported to postcss.config.js
+                                    return [
+                                        require('precss'),
+                                        require('autoprefixer'),
+                                    ];
+                                }
+                            }
                         },
                         {
                             loader: 'sass-loader',
@@ -79,6 +91,10 @@ module.exports = {
                 loader: 'file-loader?name=./assets/fonts/[name].[ext]',
             },
             {
+                test: /\.otf(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'file-loader?name=./assets/fonts/[name].[ext]',
+            },
+            {
                 test: /\.(png|ico|gif|jpg|jpeg|svg)$/,
                 exclude: /node_modules/,
                 loader: 'file-loader?name=./assets/img/[name].[ext]',
@@ -96,6 +112,13 @@ module.exports = {
             filename: '[chunkhash].[name].css',
             disable: false,
             allChunks: true,
+        }),
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            jquery: 'jquery',
+            'window.jQuery': 'jquery',
+            Popper: ['popper.js', 'default']
         }),
     ]
 }

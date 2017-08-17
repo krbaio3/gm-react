@@ -38,14 +38,21 @@
   "homepage": "https://github.com/krbaio3/gm-react#readme",
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.2",
     "react": "~15.6.1",
-    "react-dom": "~15.6.1"
+    "react-addons-css-transition-group": "^15.6.0",
+    "react-addons-transition-group": "^15.6.0",
+    "react-dom": "~15.6.1",
+    "react-toolbox": "^2.0.0-beta.12",
+    "reactstrap": "^4.8.0"
   },
   "devDependencies": {
-    "@types/node": "^8.0.20",
+    "@types/node": "^8.0.22",
     "@types/react": "~16.0.2",
-    "@types/react-dom": "~15.5.2",
-    "awesome-typescript-loader": "~3.2.2",
+    "@types/react-dom": "~15.5.3",
+    "awesome-typescript-loader": "~3.2.3",
     "copy-webpack-plugin": "~4.0.1",
     "css-loader": "~0.28.4",
     "eslint": "~4.4.1",
@@ -57,6 +64,8 @@
     "html-webpack-plugin": "~2.30.1",
     "node-sass": "~4.5.3",
     "npm-run-all": "~4.0.2",
+    "postcss-loader": "^2.0.6",
+    "precss": "^2.0.0",
     "preprocess-loader": "~0.2.2",
     "rimraf": "~2.6.1",
     "sass-lint": "~1.10.2",
@@ -65,7 +74,7 @@
     "tslint-config-airbnb": "~5.2.1",
     "typescript": "~2.4.2",
     "url-loader": "~0.5.9",
-    "webpack": "~3.5.4",
+    "webpack": "~3.5.5",
     "webpack-dev-server": "~2.7.1"
   }
 }
