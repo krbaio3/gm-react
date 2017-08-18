@@ -1,26 +1,31 @@
-const Eventos = require('events');
+'use strict'
 
-class Coche extends Eventos {
-    constructor() {
-        super();
-        this.contador=0;
-    }
+const express = require('express');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const mongose = require('mongoose');
 
-    Arrancar() {
-        console.log("El coche arranca");
-        this.emit('arranco', this.contador);
-        this.contador+=1;
-    }
+const app = express();
+const port = process.env.PORT || 3001
 
-}
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
+app.use(methodOverride());
 
-var coche1 = new Coche();
+const router = express.Router();
 
-coche1.on('arranco', function(c) {
-    console.log("El evento fue escuchado y la secuencia ejecutada => ", c);
+router.get('/hola/:name', (req, res) => {
+    res.send({message: 'Hola Mundo!'});
 });
 
-coche1.Arrancar();
-coche1.Arrancar();
-coche1.Arrancar();
-coche1.Arrancar();
+app.use(router);
+
+app.listen(port, () => {
+    console.log(`Node server running on http://localhost:${port}`);
+});
+
+// mongose.connect('monmongodb://localhost/cliente', (err, res) => {
+//     if(err){
+//         console.error('ERROR: connecting to DataBase. ' + err)
+//     }
+// });
