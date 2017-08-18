@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
-import { ShakeSlow } from 'reshake';
+import { ShakeHorizontal } from 'reshake';
 //https://elrumordelaluz.github.io/reshake/
 
 require('./social.scss');
@@ -14,9 +14,9 @@ export const Social = (props: Props) => {
   return (
         <div>
             <Navbar className="col-12" color="primary" light toggleable>
-            <ShakeSlow><Button color="success">
+            <ShakeHorizontal><Button color="success">
                         <i className="fa fa-envelope fa-2x" aria-hidden="true" />
-                    </Button></ShakeSlow>
+              </Button></ShakeHorizontal>
                     <Button color="success">
                         <i className="fa fa-twitter-square fa-2x" aria-hidden="true" />
                     </Button>
