@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const cliente = new Schema({
+    numCli: {type: Number},
     codigo: { type: Number},
     grupo: { type: String },
     nombre: { type: String },
@@ -24,6 +25,7 @@ const cliente = new Schema({
     fax: { type: String },
     email: { type: String },
     nota: { type: String },
+    numPol: { type: String },
     tipoIva: { type: String },
     iva: { type: String },
     descuento: { type: String },

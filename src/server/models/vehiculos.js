@@ -4,31 +4,22 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const vehiculo = new Schema({
-    codigo: { type: Number },
-    grupo: { type: String },
-    nombre: { type: String },
-    apellidos: { type: String },
-    fechaNac: { type: String },
-    tipoDoc: {
+    tipo: { type: String },
+    matricula: { type: String },
+    marca: { type: String },
+    modelo: { type: String },
+    version: { type: String },
+    combustible: {
         type: String, enum:
-        ['DNI', 'CIF', 'NIE']
+        ['Gasolina', 'Diesel', 'GLP', 'Hibrido', 'Electrico']
     },
-    numDoc: { type: String },
-    direccion: { type: String },
-    codPostal: { type: String },
-    localidad: { type: String },
-    provincia: { type: String },
-    pais: { type: String },
-    telefono1: { type: String },
-    telefono2: { type: String },
-    fax: { type: String },
-    email: { type: String },
-    nota: { type: String },
-    tipoIva: { type: String },
-    iva: { type: String },
-    descuento: { type: String },
-    fechaPago: { type: String },
-
+    codMotor: { type: String },
+    potencia: { type: Number },
+    tipoPintura: { type: String },
+    codColor: { type: String },
+    fechaFab: { type: String },
+    fechaMatr: { type: String },
+    
 });
 
 module.exports = mongoose.model('Vehiculo', vehiculo);
