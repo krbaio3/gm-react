@@ -2,10 +2,14 @@
   "name": "epr-home-server",
   "version": "0.0.0",
   "description": "Parte servidora de home",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon index.js",
     "postinstall": "npm ddp",
+    "log": "cat /var/log/mongodb/mongod.log",
+    "mongo": "sudo service mongod start",
+    "mongoStop": "sudo service mongod stop",
+    "mongoRestart": "sudo service mongod restart",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,10 +23,12 @@
   },
   "homepage": "https://github.com/krbaio3/gm-react#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
+    "crypto": "^1.0.1",
     "express": "^4.15.4",
     "method-override": "^2.3.9",
-    "mongoose": "^4.11.7"
+    "mongooose": "^4.11.7"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
