@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Cliente = mongoose.model('Cliente');
 
 const vehiculo = new Schema({
     tipo: String,
@@ -19,6 +20,9 @@ const vehiculo = new Schema({
     codColor: String,
     fechaFab: String,
     fechaMatr: String,
+    cliente: {
+        type: Schema.ObjectId, ref: 'Cliente',
+    },
     
 });
 

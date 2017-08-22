@@ -30,7 +30,6 @@ const cliente = new Schema({
     iva: { type: String },
     descuento: { type: String },
     fechaPago: { type: String },
-
 });
 
 module.exports = mongoose.model('Cliente', cliente);
