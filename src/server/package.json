@@ -29,7 +29,7 @@
     "express": "^4.15.4",
     "jwt-simple": "^0.5.1",
     "method-override": "^2.3.9",
-    "mongooose": "^4.11.7"
+    "mongoose": "^4.11.7"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

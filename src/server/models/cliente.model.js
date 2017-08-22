@@ -9,6 +9,7 @@ const cliente = new Schema({
     grupo: { type: String },
     nombre: { type: String },
     apellidos: { type: String },
+    compania: { type: String },
     fechaNac: { type: String },
     tipoDoc: {
         type: String, enum:

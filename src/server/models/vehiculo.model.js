@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Cliente = mongoose.model('Cliente');
+const cliente = require('./cliente.model');
 
 const vehiculo = new Schema({
     tipo: String,
@@ -23,7 +23,6 @@ const vehiculo = new Schema({
     cliente: {
         type: Schema.ObjectId, ref: 'Cliente',
     },
-    
 });
 
 module.exports = mongoose.model('Vehiculo', vehiculo);

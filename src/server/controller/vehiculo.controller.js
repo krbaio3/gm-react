@@ -19,8 +19,9 @@ function getVehiculos(req, res) {
     let vehiculoId = req.params.vehiculoId;
 
     Vehiculo.findById(vehiculoId, (err, vehiculos) => {
+        console.log(vehiculos);
         if(err) return res.status(500).send({message:`Error al realizar la peticion: ${err}`});
-        if(vehiculos.length > 0) return  res.status(200).send({vehiculos});
+        if(vehiculos!==null) return  res.status(200).send({vehiculos});
         else return res.status(204).send({message:`No existen resultados`});
     });
 }
@@ -55,11 +56,15 @@ function updateVehiculo(req, res) {
     let vehiculoId = req.params.vehiculoId;
     let update = req.body;
 
+    console.log(vehiculoId);
+    console.log(update)
+
     Vehiculo.findByIdAndUpdate(vehiculoId, update, (err, vehicleFieldsUpdated) =>{
+        console.log(vehicleFieldsUpdated);
         if(err) return res.status(500).send({message:`Error al actualizar: ${err}`});
-        if(!vehicle) return res.status(404).send({message:`El vehiculo no existe`});
+        if(!vehicleFieldsUpdated) return res.status(404).send({message:`El vehiculo no existe`});
         
-        res.status(200).send({message: `El vehiculo con id:${vehiculoId} ha sido actualizado`});
+        res.status(200).send({message: `El vehiculo con id:${vehiculoId} ha sido actualizado`, vehiculo:vehiculoId});
     })
 }
 
