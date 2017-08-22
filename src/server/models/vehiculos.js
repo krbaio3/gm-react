@@ -4,21 +4,21 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const vehiculo = new Schema({
-    tipo: { type: String },
-    matricula: { type: String },
-    marca: { type: String },
-    modelo: { type: String },
-    version: { type: String },
+    tipo: String,
+    matricula: String,
+    marca: String,
+    modelo: String,
+    version: String,
     combustible: {
-        type: String, enum:
+        String, enum:
         ['Gasolina', 'Diesel', 'GLP', 'Hibrido', 'Electrico']
     },
-    codMotor: { type: String },
-    potencia: { type: Number },
-    tipoPintura: { type: String },
-    codColor: { type: String },
-    fechaFab: { type: String },
-    fechaMatr: { type: String },
+    codMotor: String,
+    potencia: Number,
+    tipoPintura: String,
+    codColor: String,
+    fechaFab: String,
+    fechaMatr: String,
     
 });
 
