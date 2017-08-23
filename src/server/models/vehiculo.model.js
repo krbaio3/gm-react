@@ -1,8 +1,8 @@
 'use strict'
 
 const mongoose = require('mongoose');
+const Cliente = mongoose.model('Cliente');
 const Schema = mongoose.Schema;
-const cliente = require('./cliente.model');
 
 const vehiculo = new Schema({
     tipo: String,

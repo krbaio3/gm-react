@@ -1,11 +1,12 @@
 'use strict'
 
-const mongose = require('mongoose');
+const mongoose = require('mongoose');
 const app = require('./app');
 const config = require('./config');
+mongoose.Promise = global.Promise;
 
-// mongose.connect(config.db, { useMongoClient: true, }, (err, res) => {
-mongose.connect(config.db, (err, res) => {
+// mongoose.connect(config.db, { useMongoClient: true, }, (err, res) => {
+mongoose.connect(config.db, {useMongoClient: true},(err, res) => {
     if (err) {
         console.error(`ERROR: connecting to DataBase: ${err}`);
         throw err;
