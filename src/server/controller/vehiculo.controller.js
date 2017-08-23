@@ -1,28 +1,34 @@
 'use strict'
 
 const Vehiculo = require('../models/vehiculo.model');
+const Cliente = require('../models/cliente.model');
 
 function getVehiculo(req, res) {
-
+    console.log('GET /api/vehiculo/id');
     // pasarle un objeto vacio es que nos busque todos
     Vehiculo.find({}, (err,vehiculo)=>{
-        console.log(vehiculo.length);
-        if(err) return res.status(500).send({message:`Error al realizar la peticion: ${err}`});
-        if(vehiculo.length > 0) return res.status(200).send({vehiculo});
-        else return res.status(204).send({message:`No existen resultados`});
+        Cliente.populate(vehiculo, {path:'cliente'}, (err, vehiculo)=> {
+            console.log(vehiculo.length);
+            if(err) return res.status(500).send({message:`Error al realizar la peticion: ${err}`});
+            if(vehiculo.length > 0) return res.status(200).send({vehiculo});
+            else return res.status(204).send({message:`No existen resultados`});
+        });
     });
 }
 
 function getVehiculos(req, res) {
+    console.log('GET /api/vehiculo'); 
     console.log(req.params);
     
     let vehiculoId = req.params.vehiculoId;
 
     Vehiculo.findById(vehiculoId, (err, vehiculos) => {
-        console.log(vehiculos);
-        if(err) return res.status(500).send({message:`Error al realizar la peticion: ${err}`});
-        if(vehiculos!==null) return  res.status(200).send({vehiculos});
-        else return res.status(204).send({message:`No existen resultados`});
+        Cliente.populate(vehiculos, { path: 'cliente' }, (err, vehiculos) => {
+            console.log(vehiculos);
+            if (err) return res.status(500).send({ message: `Error al realizar la peticion: ${err}` });
+            if (vehiculos !== null) return res.status(200).send({ vehiculos });
+            else return res.status(204).send({ message: `No existen resultados` });
+        });
     });
 }
 
@@ -53,6 +59,7 @@ function saveVehiculo(req, res) {
 }
 
 function updateVehiculo(req, res) {
+    console.log('PUT /api/vehiculo/id');
     let vehiculoId = req.params.vehiculoId;
     let update = req.body;
 
@@ -69,6 +76,7 @@ function updateVehiculo(req, res) {
 }
 
 function deleteVehiculo(req, res) {
+    console.log('DELETE /api/vehiculo/id');
     let vehiculoId = req.params.vehiculoId;
     
     Vehiculo.findById(vehiculoId, (err, vehicle) =>{

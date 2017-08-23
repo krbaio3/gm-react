@@ -1,15 +1,24 @@
 'use strict'
 
 const Factura = require('../models/factura.model');
+const Vehiculo = require('../models/vehiculo.model');
+const Cliente = require('../models/cliente.model');
+const Taller = require('../models/taller.model');
 
 function getFactura(req, res) {
 
     // pasarle un objeto vacio es que nos busque todos
-    Factura.find({}, (err,factura)=>{
-        console.log(factura.length);
-        if(err) return res.status(500).send({message:`Error al realizar la peticion: ${err}`});
-        if(factura) return res.status(200).send({factura});
-        else return res.status(204).send({message:`No existen resultados`});
+    Factura.find({}, (err, factura) => {
+        Taller.populate(factura, { path: 'taller' }, (err, factura) => {
+            Vehiculo.populate(factura, { path: 'vehiculo' }, (err, factura) => {
+                Cliente.populate(factura, { path: 'cliente' }, (err, factura) => {
+                    console.log(factura.length);
+                    if (err) return res.status(500).send({ message: `Error al realizar la peticion: ${err}` });
+                    if (factura) return res.status(200).send({ factura });
+                    else return res.status(204).send({ message: `No existen resultados` });
+                });
+            });
+        });
     });
 }
 
@@ -18,10 +27,17 @@ function getFacturas(req, res) {
     
     let facturaId = req.params.facturaId;
 
+    // pasarle un objeto vacio es que nos busque todos
     Factura.findById(facturaId, (err, facturas) => {
-        if(err) return res.status(500).send({message:`Error al realizar la peticion: ${err}`});
-        if(facturas) return  res.status(200).send({facturas});
-        else return res.status(204).send({message:`No existen resultados`});
+        Taller.populate(factura, { path: 'taller' }, (err, factura) => {
+            Vehiculo.populate(factura, { path: 'vehiculo' }, (err, factura) => {
+                Cliente.populate(factura, { path: 'cliente' }, (err, factura) => {
+                    if (err) return res.status(500).send({ message: `Error al realizar la peticion: ${err}` });
+                    if (facturas) return res.status(200).send({ facturas });
+                    else return res.status(204).send({ message: `No existen resultados` });
+                });
+            });
+        });
     });
 }
 
