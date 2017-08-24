@@ -2,7 +2,8 @@
 
 const Taller = require('../models/taller.model');
 
-function getTaller(req, res) {
+function getTalleres(req, res) {
+    console.log('GET /api/taller');
 
     // pasarle un objeto vacio es que nos busque todos
     Taller.find({}, (err,taller)=>{
@@ -13,7 +14,8 @@ function getTaller(req, res) {
     });
 }
 
-function getTalleres(req, res) {
+function getTaller(req, res) {
+    console.log('GET /api/taller/:id');
     console.log(req.params);
     
     let tallerId = req.params.tallerId;
@@ -26,7 +28,7 @@ function getTalleres(req, res) {
 }
 
 function saveTaller(req, res) {
-    console.log('POST /api/taller') 
+    console.log('POST /api/taller');
     console.log(req.body);
 
     let taller = new Taller();
@@ -47,6 +49,7 @@ function saveTaller(req, res) {
 }
 
 function updateTaller(req, res) {
+    console.log('PUT /api/taller/:id');
     let tallerId = req.params.tallerId;
     let update = req.body;
 
@@ -58,6 +61,7 @@ function updateTaller(req, res) {
 }
 
 function deleteTaller(req, res) {
+    console.log('DELETE /api/taller/:id');
     let tallerId = req.params.tallerId;
     
     Taller.findById(tallerId, (err, taller) =>{

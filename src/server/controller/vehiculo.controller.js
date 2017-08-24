@@ -3,8 +3,8 @@
 const Vehiculo = require('../models/vehiculo.model');
 const Cliente = require('../models/cliente.model');
 
-function getVehiculo(req, res) {
-    console.log('GET /api/vehiculo/id');
+function getVehiculos(req, res) {
+    console.log('GET /api/vehiculo/');
     // pasarle un objeto vacio es que nos busque todos
     Vehiculo.find({}, (err,vehiculo)=>{
         Cliente.populate(vehiculo, {path:'cliente'}, (err, vehiculo)=> {
@@ -16,20 +16,29 @@ function getVehiculo(req, res) {
     });
 }
 
-function getVehiculos(req, res) {
-    console.log('GET /api/vehiculo'); 
+function getVehiculo(req, res) {
+    console.log('GET /api/vehiculo/id');
     console.log(req.params);
     
     let vehiculoId = req.params.vehiculoId;
-
-    Vehiculo.findById(vehiculoId, (err, vehiculos) => {
-        Cliente.populate(vehiculos, { path: 'cliente' }, (err, vehiculos) => {
-            console.log(vehiculos);
+    if (vehiculoId.length === 24) {
+        Vehiculo.findById(vehiculoId, (err, vehiculos) => {
+            Cliente.populate(vehiculos, { path: 'cliente' }, (err, vehiculos) => {
+                console.log(vehiculos);
+                if (err) return res.status(500).send({ message: `Error al realizar la peticion: ${err}` });
+                if (vehiculos !== null) return res.status(200).send({ vehiculos });
+                else return res.status(204).send({ message: `No existen resultados` });
+            });
+        });
+    } else {
+        //en este caso, clienteId equivale al numDoc
+        Vehiculo.find({ matricula: req.params.vehiculoId }, (err, cliente) => {
+            console.log(vehiculoId.length);
             if (err) return res.status(500).send({ message: `Error al realizar la peticion: ${err}` });
-            if (vehiculos !== null) return res.status(200).send({ vehiculos });
+            if (cliente) return res.status(200).send({ cliente });
             else return res.status(204).send({ message: `No existen resultados` });
         });
-    });
+    }
 }
 
 function saveVehiculo(req, res) {

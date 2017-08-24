@@ -2,8 +2,9 @@
 
 const Cliente = require('../models/cliente.model');
 
-function getCliente(req, res) {
-
+function getClientes(req, res) {
+    console.log('GET /api/cliente/id');
+    console.log(req.params);
     // pasarle un objeto vacio es que nos busque todos
     Cliente.find({}, (err,cliente)=>{
         console.log(cliente.length);
@@ -13,16 +14,30 @@ function getCliente(req, res) {
     });
 }
 
-function getClientes(req, res) {
+function getCliente(req, res) {
     console.log(req.params);
     
     let clienteId = req.params.clienteId;
+    console.log(`GET api/cliente/:id}`);
+    console.log(`Numero id: ${clienteId}`);
+    console.log(`Longitud del id: ${clienteId.length}`);
 
-    Cliente.findById(clienteId, (err, clientes) => {
-        if(err) return res.status(500).send({message:`Error al realizar la peticion: ${err}`});
-        if(clientes) return  res.status(200).send({clientes});
-        else return res.status(204).send({message:`No existen resultados`});
-    });
+    if(clienteId.length === 24){
+        Cliente.findById(clienteId, (err, clientes) => {
+            if (err) return res.status(500).send({ message: `Error al realizar la peticion: ${err}` });
+            if (clientes) return res.status(200).send({ clientes });
+            else return res.status(204).send({ message: `No existen resultados` });
+        });
+    }else{
+        //en este caso, clienteId equivale al numDoc
+        Cliente.find({ numDoc: req.params.clienteId }, (err, cliente) => {
+            console.log(cliente.length);
+            if (err) return res.status(500).send({ message: `Error al realizar la peticion: ${err}` });
+            if (cliente) return res.status(200).send({ cliente });
+            else return res.status(204).send({ message: `No existen resultados` });
+        });
+    }
+
 }
 
 function saveCliente(req, res) {

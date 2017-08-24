@@ -5,7 +5,8 @@ const Vehiculo = require('../models/vehiculo.model');
 const Cliente = require('../models/cliente.model');
 const Taller = require('../models/taller.model');
 
-function getFactura(req, res) {
+function getFacturas(req, res) {
+    console.log('GET /api/facturas');
 
     // pasarle un objeto vacio es que nos busque todos
     Factura.find({}, (err, factura) => {
@@ -22,7 +23,8 @@ function getFactura(req, res) {
     });
 }
 
-function getFacturas(req, res) {
+function getFactura(req, res) {
+    console.log('GET /api/factura/:id');
     console.log(req.params);
     
     let facturaId = req.params.facturaId;

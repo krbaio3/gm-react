@@ -1,6 +1,6 @@
 'use strict'
 
-const mongoose = requere('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
@@ -14,8 +14,9 @@ const UserSchema = new Schema({
     lastLogin: Date
 })
 
-UserSchema.pre('save', (next) => {
+UserSchema.pre('save', function (next) {
     let user = this;
+    console.log(`Usuario: ${user}`);
     if (!user.isModified('password')) return next();
 
     bcrypt.genSalt(10, (err, salt) => {

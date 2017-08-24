@@ -1,13 +1,14 @@
 'use strict'
 
 const mongoose = require('mongoose');
-const User = require('../model/user');
-const service = require('../services');
+const User = require('../models/user.model');
+const service = require('../service/index');
 
 function signUp(request, response) {
     const user = new User({
         email: request.body.email,
         displayName: request.body.displayName,
+        password: request.body.password,
     });
 
     user.save((err) => {
