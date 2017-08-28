@@ -52,7 +52,8 @@
         "react-addons-transition-group": "^15.6.0",
         "react-dom": "~15.6.1",
         "react-toolbox": "^2.0.0-beta.12",
-        "reactstrap": "^4.8.0"
+        "reactstrap": "^4.8.0",
+        "reshake": "^1.0.7"
     },
     "devDependencies": {
         "@types/node": "^8.0.24",
@@ -71,7 +72,6 @@
         "postcss-loader": "^2.0.6",
         "precss": "^2.0.0",
         "preprocess-loader": "~0.2.2",
-        "reshake": "^1.0.7",
         "react-transition-group": "^1.0.0",
         "rimraf": "~2.6.1",
         "sass-lint": "^1.10.2",

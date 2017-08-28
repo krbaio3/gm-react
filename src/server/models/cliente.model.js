@@ -10,7 +10,6 @@ const cliente = new Schema({
     nombre: { type: String },
     apellidos: { type: String },
     compania: { type: String },
-    fechaNac: { type: String },
     tipoDoc: {
         type: String, enum:
             ['DNI', 'CIF', 'NIE']
