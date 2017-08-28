@@ -8,6 +8,7 @@ import 'bootstrap';
 require('./app/sass/main.scss');
 require('./app/assets/img/favicon.png');
 
+
 ReactDOM.render(
   <App  />,
   document.getElementById('root'),
