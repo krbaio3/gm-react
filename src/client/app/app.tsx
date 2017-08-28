@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component/home';
 import { Color } from './colorPicker/color';
 import { ColorPicker } from './colorPicker/colorPicker';
 import { ColorDisplayer } from './colorPicker/colorDisplayer';
+import { InputPerformance } from './shared/input/inputPerformance';
 
 interface Props {
 
@@ -45,9 +46,16 @@ export class App extends React.Component<{}, State>{
     this.setState({ editingUserName: editingName } as State);
   }
 
+  callToService() {
+    console.log(`Llamada a Servicio`);
+  }
+
   public render() {
     return (
       <div>
+        <InputPerformance onSearchClick={this.callToService} 
+                          placeholder="Introduce Matricula..." 
+                          icono = "fa fa-search"/>
         <ColorDisplayer
           color={this.state.color}
         />
