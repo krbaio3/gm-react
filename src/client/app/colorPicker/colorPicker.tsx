@@ -7,10 +7,10 @@ interface Props {
 }
 
 export const ColorPicker = (props: Props) => {
-  const onChange = (component) => (event) => {
-    const red = (component === 'red') ? event.target.value : props.color.red;
-    const blue = (component === 'blue') ? event.target.value : props.color.blue;
-    const green = (component === 'green') ? event.target.value : props.color.green;
+  const onChange = (colorChanel) => (event) => {
+    const red = (colorChanel === 'red') ? event.target.value : props.color.red;
+    const blue = (colorChanel === 'blue') ? event.target.value : props.color.blue;
+    const green = (colorChanel === 'green') ? event.target.value : props.color.green;
     props.onColorUpdate({
       red,
       green,

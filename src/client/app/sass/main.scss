@@ -1,0 +1,14 @@
+//1 Variables para fuentes e inconos de font-awesome
+$fa-font-path: '../../../../node_modules/font-awesome/fonts';
+//2 Import para fuentes e iconos de font-awesome
+@import '../../../../node_modules/font-awesome/scss/font-awesome.scss';
+
+html { 
+  src: url($fa-font-path + '/fontawesome-webfont.woff') format('opentype');
+}
+.margin-right-xs{
+  margin-right: 1rem;
+}
+input {
+  margin-left: 10px !important;
+}
