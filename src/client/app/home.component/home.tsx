@@ -1,14 +1,17 @@
 import * as React from 'react';
-// import { VehicleComponent } from '../vehicle.component/vehicle';
+import { VehicleComponent } from '../vehicle.component/vehicle';
+import { ClientComponent } from '../client.component/client';
 import { NavBar } from '../navbar.component/navBar';
 import { Social } from '../social.component/social';
+import { ColorPicker } from '../colorPicker/colorPicker';
 require('./home.scss');
 
 export const HomeComponent = () => {
   return (
     <div>
       <NavBar></NavBar>
-      <div className="container" id="home">
+      <ClientComponent></ClientComponent>
+      {/* <div className="container" id="home">
         <div className="row">
           <button className="salto col-12">
             <i className="fa fa-file-text-o fa-5x" aria-hidden="true" />
@@ -27,7 +30,7 @@ export const HomeComponent = () => {
             <span>facturas</span>
           </button>
         </div>
-      </div>
+      </div> */}
       <Social></Social>
     </div>
   );

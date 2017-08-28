@@ -6,7 +6,7 @@ import 'jquery';
 import 'bootstrap';
 
 require('./app/sass/main.scss');
-// require('.app/shared/img/favicon.png');
+require('./app/assets/img/favicon.png');
 
 ReactDOM.render(
   <App  />,

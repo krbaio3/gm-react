@@ -5,7 +5,7 @@ export const VehicleComponent = () => {
   return (
     <div>
       <br />
-      <form>
+      <form className="form-inline">
         {/*bloque de Matricula*/}
         <div className="col-xs-4 col-lg-6">
           <div className="input-group">
@@ -51,13 +51,13 @@ export const VehicleComponent = () => {
         {/*Bloque de Combustible*/}
         <div className="col-12 col-sm-12 col-lg-6">
           <div className="input-group" >
-              <span className="input-group-addon">
-                <i className="icon-gas-station" aria-hidden="true"></i>
-              </span>
+            <span className="input-group-addon">
+              <i className="icon-gas-station" aria-hidden="true"></i>
+            </span>
             <span className="input-group-addon">
               <input type="radio" name="combustible" aria-label="Radio button for following text input" />
             </span>
-            <span className="input-group-addon">Gasolina</span>              
+            <span className="input-group-addon">Gasolina</span>
             <span className="input-group-addon">
               <input type="radio" name="combustible" aria-label="Radio button for following text input" />
             </span>
@@ -107,7 +107,7 @@ export const VehicleComponent = () => {
         {/*Bloque de Escaneo ficha tecnica*/}
         <div className="col-4 col-lg-6">
           <div className="input-group">
-          <span className="input-group-addon">Ficha Escaneada?</span>
+            <span className="input-group-addon">Ficha Escaneada?</span>
             <span className="input-group-addon">
               <input type="checkbox" aria-label="Checkbox for Ficha Escaneada" disabled />
             </span>
