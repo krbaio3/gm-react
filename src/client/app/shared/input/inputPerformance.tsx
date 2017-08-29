@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 interface Props {
-  placeholder : string;
+  placeholder: string;
   onSearchClick: () => void;
-  icono : string;
-  // disabled : boolean;
+  icono: string;
+  disabled? : boolean;
 }
 
 export const InputPerformance = (props: Props) => {
@@ -12,16 +12,16 @@ export const InputPerformance = (props: Props) => {
     props.onSearchClick();
   };
   return (
-        <div className="col-xs-4 col-lg-6">
-            <div className="input-group">
-                <input type="text" className="form-control" placeholder={props.placeholder} />
-                <span className="input-group-btn">
-                    <button className="btn btn-info" type="button" onClick = {onSearch}>
-                    <i className={props.icono} aria-hidden="true" />
-                    </button>
-                </span>
-            </div>
-        </div>
-        
+    <div className="col-xs-4 col-lg-6 mb-2">
+      <div className="input-group">
+        <input type="text" className="form-control" placeholder={props.placeholder} />
+        <span className="input-group-btn">
+          <button className="btn btn-info" type="button" onClick={onSearch}>
+            <i className={props.icono} aria-hidden="true" />
+          </button>
+        </span>
+      </div>
+    </div>
+
   );
 };

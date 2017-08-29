@@ -6,6 +6,8 @@ import { Color } from './colorPicker/color';
 import { ColorPicker } from './colorPicker/colorPicker';
 import { ColorDisplayer } from './colorPicker/colorDisplayer';
 import { InputPerformance } from './shared/input/inputPerformance';
+import { InputSimple } from './shared/input/InputSimple';
+import { VehicleComponent } from './vehicle.component/vehicle';
 
 interface Props {
 
@@ -24,7 +26,11 @@ export class App extends React.Component<{}, State>{
     super(props);
 
     // incicializamos los dos objetos como hesmos dicho en la inteface
-    this.state = { userName: ' defaultUserName', editingUserName: 'defaultEditingUserName', color:{ red:90, green:50, blue:70 } };
+    this.state = { 
+      userName: ' defaultUserName', 
+      editingUserName: 'defaultEditingUserName', 
+      color:{ red:90, green:50, blue:70 }, 
+    };
     this.setUserNameState = this.setUserNameState.bind(this);
     this.updateEditingName = this.updateEditingName.bind(this);
     this.setColorState = this.setColorState.bind(this);
@@ -53,9 +59,12 @@ export class App extends React.Component<{}, State>{
   public render() {
     return (
       <div>
-        <InputPerformance onSearchClick={this.callToService} 
+        {/* <InputPerformance onSearchClick={this.callToService} 
                           placeholder="Introduce Matricula..." 
                           icono = "fa fa-search"/>
+        <InputSimple placeholder = "Esto es un input Simple deshabilitado" disabled={true} / >
+        <InputSimple placeholder = "Esto es un input Simple habilitado" disabled={false} / >
+        
         <ColorDisplayer
           color={this.state.color}
         />
@@ -66,7 +75,7 @@ export class App extends React.Component<{}, State>{
         <ColorPicker 
         color={this.state.color}
         onColorUpdate={this.setColorState}
-        />
+        /> */}
         {/* <HelloComponent userName={this.state.userName} />
         <NameEditComponent
           editingUserName={this.state.editingUserName}
@@ -74,6 +83,7 @@ export class App extends React.Component<{}, State>{
           onNameUpdatedRequest={this.setUserNameState}
           userName={this.state.userName} /> */}
         {/* <HomeComponent></HomeComponent> */}
+        <VehicleComponent/>
       </div>
 
     );

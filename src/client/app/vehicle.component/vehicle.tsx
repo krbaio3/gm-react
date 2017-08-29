@@ -1,108 +1,82 @@
 import * as React from 'react';
+import { InputPerformance } from '../shared/input/inputPerformance';
+import { InputSimple } from '../shared/input/InputSimple';
+import { TextArea } from '../shared/text-area/text-area';
+import { ModalCustom } from '../shared/modal/modal';
+// import * from './vehicle.service';
 require('./vehicle.scss');
 
-export const VehicleComponent = () => {
+interface Props {
+}
+
+export const VehicleComponent = (props: Props) => {
+
+  const callToServiceMatricula = () => {
+    console.log(`llamada a servicio Matricula`);
+  };
+  const callToServiceMarca = () => {
+    console.log(`llamada a servicio Marca`);
+  };
+  const callToServiceModelo = () => {
+    console.log(`llamada a servicio Modelo`);
+  };
+
   return (
     <div>
       <br />
+      <ModalCustom/>
       <form className="form-inline">
         {/*bloque de Matricula*/}
-        <div className="col-xs-4 col-lg-6">
-          <div className="input-group">
-            <input type="text" className="form-control" placeholder="Introduce Matricula..." />
-            <span className="input-group-btn">
-              <button className="btn btn-info" type="button">
-                <i className="fa fa-search" aria-hidden="true" />
-              </button>
-            </span>
-          </div>
-        </div>
+        <InputPerformance onSearchClick={callToServiceMatricula}
+          placeholder="Introduce Matricula..."
+          icono="fa fa-search" />
+
         {/*bloque de Marca*/}
-        <div className="col-xs-4 col-lg-6">
-          <div className="input-group">
-            <input type="text" className="form-control" placeholder="Introduce Marca..." />
-            <span className="input-group-btn">
-              <button className="btn btn-info" type="button">
-                <i className="fa fa-search" aria-hidden="true" />
-              </button>
-            </span>
-          </div>
-        </div>
+        <InputPerformance onSearchClick={callToServiceMarca}
+          placeholder="Introduce Marca..."
+          icono="fa fa-search" />
+
         {/*bloque de Modelo*/}
-        <div className="col-xs-4 col-lg-6">
-          <div className="input-group">
-            <input type="text" className="form-control" placeholder="Introduce Modelo..." />
-            <span className="input-group-btn">
-              <button className="btn btn-info" type="button">
-                <i className="fa fa-search" aria-hidden="true" />
-              </button>
-            </span>
-          </div>
-        </div>
+        <InputPerformance onSearchClick={callToServiceModelo}
+          placeholder="Introduce Modelo..."
+          icono="fa fa-search" />
+
         {/*Bloque de Version*/}
-        <div className="col-xs-4 col-lg-6">
+        <div className="col-xs-4 col-lg-6 mb-2">
           <div className="input-group">
             <input type="text" className="form-control" placeholder="Introduce Versión..." />
-            <span className="input-group-btn">
-              {/*<button className="btn btn-secondary" type="button">Imagen Buscar</button>*/}
-            </span>
-          </div>
-        </div>
-        {/*Bloque de Combustible*/}
-        <div className="col-12 col-sm-12 col-lg-6">
-          <div className="input-group" >
-            <span className="input-group-addon">
-              <i className="icon-gas-station" aria-hidden="true"></i>
-            </span>
-            <span className="input-group-addon">
-              <input type="radio" name="combustible" aria-label="Radio button for following text input" />
-            </span>
-            <span className="input-group-addon">Gasolina</span>
-            <span className="input-group-addon">
-              <input type="radio" name="combustible" aria-label="Radio button for following text input" />
-            </span>
-            <span className="input-group-addon">Diesel</span>
-          </div>
-        </div>
-        {/*Bloque de Año*/}
-        <div className="col-xs-4 col-lg-6">
-          <div className="input-group">
-            <input type="text" className="form-control" placeholder="Introduce Fecha Matriculación..." />
-            <span className="input-group-btn">
-              <span className="input-group-addon">
-                <i className="fa fa-calendar" aria-hidden="true"></i>
-              </span>
-            </span>
-          </div>
-        </div>
-        {/*Bloque de Km*/}
-        <div className="col-xs-4 col-lg-6">
-          <div className="input-group">
-            <input type="number" className="form-control" placeholder="Introduce km..." />
-            <span className="input-group-addon">
-              <i className="fa fa-road" aria-hidden="true"></i>
-            </span>
-          </div>
-        </div>
-        {/*Bloque de NºBastidor*/}
-        <div className="col-xs-4 col-lg-6">
-          <div className="input-group">
-            <input type="text" className="form-control" placeholder="Introduce Nº Bastidor..." />
-            <span className="input-group-addon add-on">
-              <i className="fa fa-car" aria-hidden="true"></i>
-            </span>
+            <span className="input-group-btn" />
           </div>
         </div>
 
-        {/*Bloque de ITV*/}
-        <div className="col-xs-4 col-lg-6">
-          <div className="input-group">
-            <input type="text" className="form-control" placeholder="Introduce Fecha ITV..." />
-            <span className="input-group-addon add-on">
-              <i className="fa fa-calendar" aria-hidden="true"></i>
-            </span>
+        {/*Bloque de Combustible*/}
+        <div className="col-12 col-sm-12 col-lg-6 mb-2 ml-2">
+          <div className="btn-group" >
+            <label className="btn btn-info">
+              <input type="radio" name="options" id="option1" /> Gasolina
+          </label>
+            <label className="btn btn-info">
+              <input type="radio" name="options" id="option2" /> Diesel
+          </label>
           </div>
         </div>
+        {/*Bloque de Año*/}
+        <InputSimple
+          icono="fa fa-calendar" tipo="date" />
+
+        {/*Bloque de Km*/}
+        <InputSimple
+          placeholder="Introduce km..."
+          icono="fa fa-road" />
+
+        {/*Bloque de NºBastidor*/}
+        <InputSimple
+          placeholder="Introduce Nº Bastidor..."
+          icono="fa fa-car" />
+
+        {/*Bloque de ITV*/}
+        <InputSimple
+          icono="fa fa-calendar" tipo="date" />
 
         {/*Bloque de Escaneo ficha tecnica*/}
         <div className="col-4 col-lg-6">
@@ -118,16 +92,13 @@ export const VehicleComponent = () => {
         </div>
 
         {/*Bloque obsevaciones*/}
-        <div className="form-group col-xs-4 col-lg-6">
-          <label htmlFor="obervationTextarea">Observaciones</label>
-          <textarea className="form-control" id="obervationTextarea" ></textarea>
-        </div>
+        <TextArea observaciones="Observaciones" />
         {/*Bloque Numero de PR*/}
         {/*<label>Label1</label>
         <input type="text" />
         <button className="btn btn-search" />*/}
         <button type="submit" className="btn btn-success">Aceptar</button>
-        <button type="reset" className="btn btn-danger">Cancelar</button>
+        <button type="reset" className="btn btn-danger ml-2">Cancelar</button>
       </form>
     </div >
   );
