@@ -9,15 +9,17 @@ interface Props {
 
 export const ColorPicker = (props: Props) => {
   const onChange = (colorChanel) => (colorValue : number) => {
-    const red = (colorChanel === 'red') ? colorValue : props.color.red;
-    const blue = (colorChanel === 'blue') ? colorValue : props.color.blue;
-    const green = (colorChanel === 'green') ? colorValue : props.color.green;
-    props.onColorUpdate({
-      red,
-      green,
-      blue,
-    });
+    props.onColorUpdate({ ...props.color,[colorChanel] : colorValue });
   };
+  //   const red = (colorChanel === 'red') ? colorValue : props.color.red;
+  //   const blue = (colorChanel === 'blue') ? colorValue : props.color.blue;
+  //   const green = (colorChanel === 'green') ? colorValue : props.color.green;
+  //   props.onColorUpdate({
+  //     red,
+  //     green,
+  //     blue,
+  //   });
+  // };
 
   // const onChange = (colorChanel) => (event) => {
   //   const red = (colorChanel === 'red') ? event.target.value : props.color.red;

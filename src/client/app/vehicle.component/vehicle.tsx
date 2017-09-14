@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { InputPerformance } from '../shared/input/inputPerformance';
 import { InputSimple } from '../shared/input/InputSimple';
+import { InputDropDown } from '../shared/input/inputDropDown';
 import { TextArea } from '../shared/text-area/text-area';
 import { ModalCustom } from '../shared/modal/modal';
-// import * from './vehicle.service';
+import { App }  from './vehicle.service';
 require('./vehicle.scss');
 
 interface Props {
@@ -24,7 +25,8 @@ export const VehicleComponent = (props: Props) => {
   return (
     <div>
       <br />
-      <ModalCustom/>
+      <App/>
+
       <form className="form-inline">
         {/*bloque de Matricula*/}
         <InputPerformance onSearchClick={callToServiceMatricula}
@@ -50,19 +52,18 @@ export const VehicleComponent = (props: Props) => {
         </div>
 
         {/*Bloque de Combustible*/}
-        <div className="col-12 col-sm-12 col-lg-6 mb-2 ml-2">
-          <div className="btn-group" >
-            <label className="btn btn-info">
-              <input type="radio" name="options" id="option1" /> Gasolina
-          </label>
-            <label className="btn btn-info">
-              <input type="radio" name="options" id="option2" /> Diesel
-          </label>
-          </div>
-        </div>
+        <InputDropDown title="combustible"/>
+
+        {/* Bloque CodMotor y Potencia */}
+        <InputDropDown title="codMotor"/>
+        <InputDropDown title="CV"/>
+
+
+        <InputDropDown/>
+
         {/*Bloque de Año*/}
         <InputSimple
-          icono="fa fa-calendar" tipo="date" />
+          icono="fa fa-calendar" tipo="month" />
 
         {/*Bloque de Km*/}
         <InputSimple
@@ -79,15 +80,13 @@ export const VehicleComponent = (props: Props) => {
           icono="fa fa-calendar" tipo="date" />
 
         {/*Bloque de Escaneo ficha tecnica*/}
-        <div className="col-4 col-lg-6">
+        <div className="col-xs-4 col-lg-6">
           <div className="input-group">
             <span className="input-group-addon">Ficha Escaneada?</span>
             <span className="input-group-addon">
               <input type="checkbox" aria-label="Checkbox for Ficha Escaneada" disabled />
             </span>
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Escanear Ficha
-          </button>
+            <ModalCustom colorButton="info" buttonLabel="Escanear Ficha" />
           </div>
         </div>
 

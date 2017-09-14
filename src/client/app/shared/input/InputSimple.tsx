@@ -5,6 +5,7 @@ interface Props {
   disabled?: boolean;
   icono?: string;
   tipo?: string;
+  value?: string;
 }
 
 const defaultProps = {
@@ -13,13 +14,14 @@ const defaultProps = {
   tipo: 'text',
 };
 
-export const InputSimple = ({ placeholder, disabled, icono, tipo }: Props) => {
+export const InputSimple = ({ placeholder, disabled, icono, tipo, value }: Props) => {
 
   return (
     <div className="col-xs-4 col-lg-6 mb-2">
       <div className="input-group">
         <input type={tipo} className="form-control"
           placeholder={placeholder}
+          value={value}
           disabled={disabled} />
         <span className="input-group-addon">
           <i className={icono} aria-hidden="true" />
