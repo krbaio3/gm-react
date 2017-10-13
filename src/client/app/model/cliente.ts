@@ -1,5 +1,6 @@
 export class ClienteEntity {
 
+  id: string;
   numCli: number;
   codigo: number;
   grupo: string;
@@ -25,6 +26,7 @@ export class ClienteEntity {
   fechaPago: string;
 
   constructor() {
+    this.id = '';
     this.numCli = -1;
     this.codigo = -1;
     this.grupo = '';

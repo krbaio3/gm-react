@@ -8,6 +8,7 @@ import { ColorDisplayer } from './colorPicker/colorDisplayer';
 import { InputPerformance } from './shared/input/inputPerformance';
 import { InputSimple } from './shared/input/InputSimple';
 import { VehicleComponent } from './vehicle.component/vehicle';
+import { ClientComponent } from './client.component/client';
 
 interface Props {
 
@@ -84,6 +85,7 @@ export class App extends React.Component<{}, State>{
           userName={this.state.userName} /> */}
         {/* <HomeComponent></HomeComponent> */}
         <VehicleComponent/>
+        <ClientComponent/>
       </div>
 
     );

@@ -1,4 +1,4 @@
-export class VehiculoEntity {
+export default class VehiculoEntity {
   tipo: string;
   matricula: string;
   marca: string;
